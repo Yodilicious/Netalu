@@ -23,23 +23,37 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="center|bottom"
                 android:padding="5dp">
 
-                <TextView
-                    android:id="@+id/usernameTextView"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/beefButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Username" />
+                    android:layout_weight="0.5"
+                    android:text="Beef" />
 
-                <EditText
-                    android:id="@+id/usernameEditText"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/poultryButton"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text="" />
+                    android:layout_weight="0.5"
+                    android:text="Poultry" />
+
+                <Button
+                    android:id="@+id/porkButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Pork" />
+
+                <Button
+                    android:id="@+id/venisonButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="Venison" />
 
             </LinearLayout>
 

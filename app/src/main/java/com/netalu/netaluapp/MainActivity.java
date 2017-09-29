@@ -16,6 +16,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button loginButton;
+    private Button registerButton;
 
     /**
      * Whether or not the system UI should be auto-hidden after
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         loginButton = (Button) findViewById(R.id.loginButton);
+        registerButton = (Button) findViewById(R.id.registerButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,11 +82,24 @@ public class MainActivity extends AppCompatActivity {
                 launchLoginActivity();
             }
         });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchRegisterActivity();
+            }
+        });
     }
 
     private void launchLoginActivity() {
 
         Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchRegisterActivity() {
+
+        Intent intent = new Intent(this, RegistrationActivity.class);
         startActivity(intent);
     }
 

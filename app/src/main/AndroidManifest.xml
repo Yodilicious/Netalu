@@ -75,10 +75,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".MainMenuActivity"
+            android:label="@string/title_activity_main_menu"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:theme="@style/SplashTheme" />
-        <activity android:name=".MainMenuActivity"></activity>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
