@@ -17,7 +17,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.provinceSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(RegistrationActivity.this,
                 android.R.layout.simple_spinner_item,paths);
 
