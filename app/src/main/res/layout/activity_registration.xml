@@ -32,61 +32,16 @@
 
                     <TextView
                         android:id="@+id/usernameTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Username"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/usernameTextEdit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName|textCapWords" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/firstNameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="First Name"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/firstNameEditText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/lastNameTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Last Name"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/lastNameTextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName" />
@@ -101,15 +56,68 @@
                     android:padding="5dp">
 
                     <TextView
+                        android:id="@+id/firstNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:text="First Name"
+                        android:textSize="@dimen/text_form_label" />
+
+                    <EditText
+                        android:id="@+id/firstNameEditText"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName|textCapWords"
+                        android:text="" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/lastNameTextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:text="Last Name"
+                        android:textSize="@dimen/text_form_label" />
+
+                    <EditText
+                        android:id="@+id/lastNameTextEdit"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textPersonName|textCapWords" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
                         android:id="@+id/streetAddressTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Street Address"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/streetAddressTextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName" />
@@ -125,14 +133,16 @@
 
                     <TextView
                         android:id="@+id/provinceTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Province"
                         android:textSize="@dimen/text_form_label" />
 
                     <Spinner
                         android:id="@+id/provinceSpinner"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="match_parent"
                         android:textSize="@dimen/text_form_label" />
 
@@ -147,14 +157,16 @@
 
                     <TextView
                         android:id="@+id/postalCodeTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Postal Code"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/postalCodeTextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPostalAddress" />
@@ -170,14 +182,16 @@
 
                     <TextView
                         android:id="@+id/emailTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Email Address"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/emailTextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textEmailAddress" />
@@ -193,14 +207,16 @@
 
                     <TextView
                         android:id="@+id/email2TextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Re-enter Email Address"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/email2TextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textEmailAddress" />
@@ -215,14 +231,16 @@
 
                     <TextView
                         android:id="@+id/passwordTextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Password"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/passwordTextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPassword" />
@@ -238,14 +256,16 @@
 
                     <TextView
                         android:id="@+id/password2TextView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
                         android:text="Re-enter Password"
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
                         android:id="@+id/password2TextEdit"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPassword" />
@@ -263,14 +283,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
-                        android:text="Submit" />
+                        android:text="Register" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
         </ScrollView>
 
     </RelativeLayout>
-
 
 </android.support.constraint.ConstraintLayout>
