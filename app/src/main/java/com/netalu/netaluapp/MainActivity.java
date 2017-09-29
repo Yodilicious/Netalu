@@ -6,11 +6,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-
-import static com.netalu.netaluapp.R.id.loginButton;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_fullscreen);
+        setContentView(R.layout.activity_main);
 
         loginButton = (Button) findViewById(R.id.loginButton);
 
