@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -55,8 +57,20 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
     private void launchRegisterActivity() {
 
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        startActivity(intent);
+        EditText password1 = (EditText) findViewById(R.id.passwordTextEdit);
+        EditText password2 = (EditText) findViewById(R.id.password2TextEdit);
+
+        if(password1.getText().toString().equals(password2.getText().toString()) && !password1.getText().toString().equals("") && !password2.getText().toString().equals("")) {
+
+            Intent intent = new Intent(this, MainMenuActivity.class);
+            startActivity(intent);
+        } else {
+
+            Toast.makeText(getApplicationContext(), "Password does not Match", Toast.LENGTH_LONG).show();
+            password1.setError("Password does not Match");
+            password2.setError("Password does not Match");
+        }
+
     }
 
     @Override
