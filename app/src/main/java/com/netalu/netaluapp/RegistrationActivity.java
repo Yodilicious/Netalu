@@ -47,6 +47,9 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
+        int selectSpinnerPosition= adapter.getPosition("Ontario");
+        spinner.setSelection(selectSpinnerPosition);
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,7 +86,7 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
                 // Whatever you want to happen when the second item gets selected
                 break;
             case 2:
-                // Whatever you want to happen when the thrid item gets selected
+                // Whatever you want to happen when the third item gets selected
                 break;
         }
     }
