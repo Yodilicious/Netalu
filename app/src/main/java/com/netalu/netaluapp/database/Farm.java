@@ -19,7 +19,8 @@ public class Farm {
     public String phone_number;
     public String website;
 
-    public Farm(int id, int category_id, int foodgroup_id, String name, String description, String address1, String address2, String city, String province, String postal_code, String phone_number, String website) {
+    public Farm(int id, int category_id, int foodgroup_id, String name, String description, String address1, String address2,
+                String city, String province, String postal_code, String phone_number, String website) {
         this.id = id;
         this.category_id = category_id;
         this.foodgroup_id = foodgroup_id;
