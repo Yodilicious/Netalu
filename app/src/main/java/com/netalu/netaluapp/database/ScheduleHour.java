@@ -1,9 +1,21 @@
 package com.netalu.netaluapp.database;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(tableName = "schedule_hour",
+    foreignKeys = {
+        @ForeignKey(
+            entity = Schedule.class,
+            parentColumns = "id",
+            childColumns = "schedule_id",
+            onDelete = ForeignKey.NO_ACTION
+        )
+    },
+    indices = { @Index(value = "id") }
+)
 public class ScheduleHour {
     @PrimaryKey
     public final int id;

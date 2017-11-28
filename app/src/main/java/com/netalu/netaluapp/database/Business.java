@@ -1,10 +1,28 @@
 package com.netalu.netaluapp.database;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
-public class Farm {
+@Entity(tableName = "business",
+    foreignKeys = {
+        @ForeignKey(
+                entity = Category.class,
+                parentColumns = "id",
+                childColumns = "category_id",
+                onDelete = ForeignKey.NO_ACTION
+        ),
+        @ForeignKey(
+                entity = FoodGroup.class,
+                parentColumns = "id",
+                childColumns = "foodgroup_id",
+                onDelete = ForeignKey.NO_ACTION
+        )
+    },
+    indices = { @Index(value = "id") }
+)
+public class Business {
     @PrimaryKey
     public final int id;
     public int category_id;
@@ -19,7 +37,7 @@ public class Farm {
     public String phone_number;
     public String website;
 
-    public Farm(int id, int category_id, int foodgroup_id, String name, String description, String address1, String address2,
+    public Business(int id, int category_id, int foodgroup_id, String name, String description, String address1, String address2,
                 String city, String province, String postal_code, String phone_number, String website) {
         this.id = id;
         this.category_id = category_id;
