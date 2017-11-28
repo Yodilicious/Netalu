@@ -9,6 +9,8 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import com.netalu.netaluapp.database.AppDatabase;
+
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 launchRegisterActivity();
             }
         });
+
+
     }
 
     private void launchLoginActivity() {

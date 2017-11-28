@@ -22,12 +22,12 @@ public class Category {
     public final int id;
     public int food_group_id;
     public String name;
-    public String decription;
+    public String description;
 
     public Category(int id, int food_group_id, String name, String description) {
         this.id = id;
         this.food_group_id = food_group_id;
         this.name = name;
-        this.decription = description;
+        this.description = description;
     }
 }

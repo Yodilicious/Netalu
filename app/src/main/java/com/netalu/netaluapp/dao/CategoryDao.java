@@ -23,7 +23,7 @@ public interface CategoryDao {
     public List<Category> getCategory(int category_id);
 
     @Query("SELECT * FROM category WHERE food_group_id = :food_group_id")
-    public List<Category> getAllCatetoriesForFoodGroup(int food_gorup_id);
+    public List<Category> getAllCatetoriesForFoodGroup(int food_group_id);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateCategory(Category category);
