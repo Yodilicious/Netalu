@@ -33,17 +33,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
         database = AppDatabase.getDatabase(getApplicationContext());
 
-        database.foodGroupDao().removeAllFoodGroups();
-
-        List<FoodGroup> foodGroups = database.foodGroupDao().getAllFoodGroups();
-
-        if(foodGroups.size() == 0) {
-
-            database.foodGroupDao().addFoodGroup(new FoodGroup(1, "Beeferoni", "Cool as a beefee!"));
-            foodGroup = database.foodGroupDao().getAllFoodGroups().get(0);
-            Toast.makeText(this, String.valueOf(foodGroup.id), Toast.LENGTH_SHORT).show();
-        }
-
         displayMainMenu();
 
         setContentView(R.layout.activity_main_menu);

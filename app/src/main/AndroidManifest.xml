@@ -57,7 +57,6 @@
         android:allowBackup="true"
         android:icon="@mipmap/netalu_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/netalu_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -71,7 +70,6 @@
             android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -86,10 +84,7 @@
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
         <activity android:name=".SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

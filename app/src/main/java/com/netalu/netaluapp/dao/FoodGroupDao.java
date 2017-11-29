@@ -29,5 +29,5 @@ public interface FoodGroupDao {
     void removeFoodGroup(int food_group_id);
 
     @Query("DELETE FROM food_group")
-    void removeAllFoodGroups();
+    void deleteAllFoodGroups();
 }

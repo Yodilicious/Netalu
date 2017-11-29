@@ -8,7 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
     indices = { @Index(value = "id") }
 )
 public class FoodGroup {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     public final int id;
     public String name;
     public String description;

@@ -32,5 +32,5 @@ public interface ReviewDao {
     void deleteReview(int review_id);
 
     @Query("DELETE FROM review")
-    void deleteAllReview();
+    void deleteAllReviews();
 }

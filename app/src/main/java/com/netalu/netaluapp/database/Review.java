@@ -17,7 +17,8 @@ import android.arch.persistence.room.PrimaryKey;
     indices = { @Index(value = "id") }
 )
 public class Review {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     public final int id;
     public int business_id;
     public int rating;

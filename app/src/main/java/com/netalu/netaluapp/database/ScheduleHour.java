@@ -17,7 +17,8 @@ import android.arch.persistence.room.PrimaryKey;
     indices = { @Index(value = "id") }
 )
 public class ScheduleHour {
-    @PrimaryKey
+
+    @PrimaryKey(autoGenerate = true)
     public final int id;
     public int schedule_id;
     public String open_time;

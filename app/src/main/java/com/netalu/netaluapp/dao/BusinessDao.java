@@ -29,5 +29,5 @@ public interface BusinessDao {
     void removeBusiness(int business_id);
 
     @Query("DELETE FROM business")
-    void removeAllBusinesses();
+    void deleteAllBusinesses();
 }
