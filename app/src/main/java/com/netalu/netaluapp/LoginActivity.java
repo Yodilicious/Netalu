@@ -9,7 +9,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.netalu.netaluapp.database.AppDatabase;
+import com.netalu.netaluapp.database.User;
+
+import java.util.List;
+
 public class LoginActivity extends AppCompatActivity {
+
+    private AppDatabase database;
+    private List<User> users;
 
     private Button loginButton;
     private Button cancelButton;
@@ -21,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        database = AppDatabase.getDatabase(getApplicationContext());
 
         loginButton = (Button) findViewById(R.id.loginButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
@@ -45,16 +55,32 @@ public class LoginActivity extends AppCompatActivity {
         usernameTextEdit = (EditText) findViewById(R.id.usernameEditText);
         passwordTextEdit = (EditText) findViewById(R.id.passwordTextEdit);
 
-        if(usernameTextEdit.getText().toString().equals("")) {
+        users = database.userDao().getUserByUsername(usernameTextEdit.getText().toString());
 
-            CreateErrorDialog("Please enter your username.");
-        } else if(passwordTextEdit.getText().toString().equals("")) {
+        if(users.size() == 1) {
 
-            CreateErrorDialog("Please enter your password.");
+            User user = users.get(0);
+
+            if (usernameTextEdit.getText().toString().equals("")) {
+
+                CreateErrorDialog("Please enter your username.");
+            } else if (!usernameTextEdit.getText().toString().equals(user.username)) {
+
+                CreateErrorDialog("The username does not match.");
+            } else if (passwordTextEdit.getText().toString().equals("")) {
+
+                CreateErrorDialog("Please enter your password.");
+            } else if (!passwordTextEdit.getText().toString().equals(user.password)) {
+
+                CreateErrorDialog("Password does not match.");
+            } else {
+
+                Intent intent = new Intent(this, MainMenuActivity.class);
+                startActivity(intent);
+            }
         } else {
 
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            startActivity(intent);
+            CreateErrorDialog("User not found. Please check your username.");
         }
     }
 

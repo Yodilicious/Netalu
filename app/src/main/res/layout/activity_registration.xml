@@ -31,31 +31,6 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/usernameTextView"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.65"
-                        android:layout_height="wrap_content"
-                        android:text="Username"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/usernameTextEdit"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
                         android:id="@+id/firstNameTextView"
                         android:layout_width="match_parent"
                         android:layout_weight="0.65"
@@ -90,37 +65,12 @@
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
-                        android:id="@+id/lastNameTextEdit"
+                        android:id="@+id/lastNameEditText"
                         android:layout_width="match_parent"
                         android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPersonName|textCapWords" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/streetAddressTextView"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.65"
-                        android:layout_height="wrap_content"
-                        android:text="Street Address"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/streetAddressTextEdit"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -164,7 +114,7 @@
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
-                        android:id="@+id/postalCodeTextEdit"
+                        android:id="@+id/postalCodeEditText"
                         android:layout_width="match_parent"
                         android:layout_weight="0.35"
                         android:layout_height="wrap_content"
@@ -189,37 +139,13 @@
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
-                        android:id="@+id/emailTextEdit"
+                        android:id="@+id/emailEditText"
                         android:layout_width="match_parent"
                         android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textEmailAddress" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/email2TextView"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.65"
-                        android:layout_height="wrap_content"
-                        android:text="Re-enter Email Address"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/email2TextEdit"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textEmailAddress" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -238,37 +164,13 @@
                         android:textSize="@dimen/text_form_label" />
 
                     <EditText
-                        android:id="@+id/passwordTextEdit"
+                        android:id="@+id/passwordEditText"
                         android:layout_width="match_parent"
                         android:layout_weight="0.35"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPassword" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/password2TextView"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.65"
-                        android:layout_height="wrap_content"
-                        android:text="Re-enter Password"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/password2TextEdit"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPassword" />
                 </LinearLayout>
 
                 <LinearLayout

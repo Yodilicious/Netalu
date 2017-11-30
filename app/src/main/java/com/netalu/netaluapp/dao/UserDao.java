@@ -22,6 +22,9 @@ public interface UserDao {
     @Query("SELECT * FROM user WHERE id = :user_id")
     public List<User> getUser(int user_id);
 
+    @Query("SELECT * FROM user WHERE email = :email")
+    public List<User> getUserByEmail(String email);
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateUser(User user);
 

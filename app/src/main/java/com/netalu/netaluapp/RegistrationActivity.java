@@ -1,5 +1,7 @@
 package com.netalu.netaluapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +13,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.netalu.netaluapp.database.AppDatabase;
+import com.netalu.netaluapp.database.User;
+
+import java.util.List;
+
 public class RegistrationActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    private AppDatabase database;
+    private List<User> users;
     private Button registerButton;
     private Spinner spinner;
     private static final String[]paths =
@@ -37,6 +46,8 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        database = AppDatabase.getDatabase(getApplicationContext());
+
         registerButton = (Button) findViewById(R.id.registrationSubmitButton);
 
         spinner = (Spinner)findViewById(R.id.provinceSpinner);
@@ -60,20 +71,39 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
     private void launchRegisterActivity() {
 
-        EditText password1 = (EditText) findViewById(R.id.passwordTextEdit);
-        EditText password2 = (EditText) findViewById(R.id.password2TextEdit);
+        EditText firstName = (EditText) findViewById(R.id.firstNameEditText);
+        EditText lastName = (EditText) findViewById(R.id.lastNameEditText);
+        Spinner province = (Spinner) findViewById(R.id.provinceSpinner);
+        EditText postalCode = (EditText) findViewById(R.id.postalCodeEditText);
+        EditText email = (EditText) findViewById(R.id.emailEditText);
+        EditText password = (EditText) findViewById(R.id.passwordEditText);
 
-        if(password1.getText().toString().equals(password2.getText().toString()) && !password1.getText().toString().equals("") && !password2.getText().toString().equals("")) {
+        if(!password.getText().toString().equals("")) {
 
-            Intent intent = new Intent(this, MainMenuActivity.class);
-            startActivity(intent);
+            users  = database.userDao().getUserByEmail(email.getText().toString());
+
+            if(users.size() == 0) {
+
+                String firstNameStr = firstName.getText().toString();
+                String lastNameStr = lastName.getText().toString();
+                String provinceStr = province.getSelectedItem().toString();
+                String postalCodeStr = postalCode.getText().toString();
+                String emailStr = email.getText().toString();
+                String passwordStr = password.getText().toString();
+
+                database.userDao().addUser(new User(0, firstNameStr, lastNameStr, provinceStr, postalCodeStr, emailStr, passwordStr));
+
+                Intent intent = new Intent(this, MainMenuActivity.class);
+                startActivity(intent);
+            } else {
+                CreateErrorDialog("This email already exists.");
+            }
+
         } else {
 
             Toast.makeText(getApplicationContext(), "Password does not Match", Toast.LENGTH_LONG).show();
-            password1.setError("Password does not Match");
-            password2.setError("Password does not Match");
+            password.setError("Password cannot be empty");
         }
-
     }
 
     @Override
@@ -94,5 +124,18 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    private void CreateErrorDialog(String text) {
+        AlertDialog ad = new AlertDialog.Builder(this).create();
+        ad.setCancelable(false); // This blocks the 'BACK' button
+        ad.setMessage(text);
+        ad.setButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        ad.show();
     }
 }

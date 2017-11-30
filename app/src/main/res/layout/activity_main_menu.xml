@@ -21,39 +21,12 @@
             android:id="@+id/linearLayout2">
 
             <LinearLayout
+                android:id="@+id/linearInnerLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center|bottom"
                 android:padding="5dp">
-
-                <Button
-                    android:id="@+id/beefButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="Beef" />
-
-                <Button
-                    android:id="@+id/poultryButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="Poultry" />
-
-                <Button
-                    android:id="@+id/porkButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="Pork" />
-
-                <Button
-                    android:id="@+id/venisonButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:text="Venison" />
 
             </LinearLayout>
 

@@ -10,6 +10,12 @@ import android.view.View;
 import android.widget.Button;
 
 import com.netalu.netaluapp.database.AppDatabase;
+import com.netalu.netaluapp.database.Business;
+import com.netalu.netaluapp.database.BusinessFoodGroup;
+import com.netalu.netaluapp.database.FoodGroup;
+import com.netalu.netaluapp.database.User;
+
+import java.util.List;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -17,6 +23,7 @@ import com.netalu.netaluapp.database.AppDatabase;
  */
 public class MainActivity extends AppCompatActivity {
 
+    private AppDatabase database;
     private Button loginButton;
     private Button registerButton;
 
@@ -84,6 +91,57 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        database = AppDatabase.getDatabase(getApplicationContext());
+
+        database.businessFoodGroupDao().deleteAllBusinessFoodGroups();
+        database.businessDao().deleteAllBusinesses();
+        database.foodGroupDao().deleteAllFoodGroups();
+        database.reviewDao().deleteAllReviews();
+        database.scheduleDao().deleteAllSchedules();
+        database.scheduleHourDao().deleteAllScheduleHours();
+        database.userDao().deleteAllUsers();
+
+        List<FoodGroup> foodGroups = database.foodGroupDao().getAllFoodGroups();
+
+        if(foodGroups.size() == 0) {
+            database.foodGroupDao().addFoodGroup(new FoodGroup(1, "Beef", "Cool as a beefee!"));
+            database.foodGroupDao().addFoodGroup(new FoodGroup(2, "Pork", "Sexy as a Porky Piggy!"));
+            database.foodGroupDao().addFoodGroup(new FoodGroup(3, "Poultery", "Yummy as a Turkey!"));
+            database.foodGroupDao().addFoodGroup(new FoodGroup(4, "Venison", "Scrumptious as a Moosey!"));
+        }
+
+        List<Business> businesses = database.businessDao().getAllBusinesses();
+
+        if(businesses.size() == 0) {
+            database.businessDao().addBusiness(new Business(1, "Old MacDonald's Farm", "We sell lots of Beef and Pork products", "34993 Church Road",
+                    "P.O Box #12", "Norwich", "Ontario", "N0J 1P0", "345-333-2345", "www.OldMacDonald'sFarm.com"));
+            database.businessDao().addBusiness(new Business(2, "Mother Goose Farms", "We sell lots of Poultry products. Come visit us!", "34678 Downey Street",
+                    "P.O Box #114", "Burgessville", "Ontario", "N0J 1C0", "519-393-7777", "www.MotherGooseFarms.com"));
+            database.businessDao().addBusiness(new Business(3, "Turkey Lurkey Farms", "Juicy and plump turkey for sale!", "67895 Feather Road",
+                    "P.O Box #33", "Otterville", "Ontario", "N4S 1T3", "544-030-7893", "www.TurkeyLurkeyFarms.com"));
+            database.businessDao().addBusiness(new Business(4, "Deer Creek Farms", "Lots of Deer meat to eat!", "57438 Bambi Street",
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
+        }
+
+        List<BusinessFoodGroup> bsfg = database.businessFoodGroupDao().getAllBusinessFoodGroups();
+
+        if(bsfg.size() == 0) {
+
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(1, 1,1));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(2, 2,2));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(3, 3,3));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(3, 3,4));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(4, 4,3));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(4, 4,4));
+        }
+
+        List<User> users = database.userDao().getAllUsers();
+
+        if(users.size() == 0) {
+
+            database.userDao().addUser(new User(1,"jvisser","Jodi","Visser", "43 McNAB Lane", "Burgessville", "ON", "N0J1C0", "visser.jodi@gmail.com", "access"));
+        }
+
         loginButton = (Button) findViewById(R.id.loginButton);
         registerButton = (Button) findViewById(R.id.registerButton);
 
@@ -93,15 +151,12 @@ public class MainActivity extends AppCompatActivity {
                 launchLoginActivity();
             }
         });
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchRegisterActivity();
             }
         });
-
-
     }
 
     private void launchLoginActivity() {

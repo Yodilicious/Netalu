@@ -6,7 +6,6 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.netalu.netaluapp.database.Business;
 import com.netalu.netaluapp.database.BusinessFoodGroup;
 import com.netalu.netaluapp.database.FoodGroup;
 
@@ -16,7 +15,7 @@ import java.util.List;
 public interface BusinessFoodGroupDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void addBusinessFoodGroup(FoodGroup foodGroup);
+    void addBusinessFoodGroup(BusinessFoodGroup foodGroup);
 
     @Query("SELECT * FROM business_food_group")
     public List<BusinessFoodGroup> getAllBusinessFoodGroups();
