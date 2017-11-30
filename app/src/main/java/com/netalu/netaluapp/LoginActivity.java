@@ -22,8 +22,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button cancelButton;
 
-    private EditText usernameTextEdit;
-    private EditText passwordTextEdit;
+    private EditText emailEditText;
+    private EditText passwordEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,25 +52,25 @@ public class LoginActivity extends AppCompatActivity {
 
     private void launchLoginActivity() {
 
-        usernameTextEdit = (EditText) findViewById(R.id.usernameEditText);
-        passwordTextEdit = (EditText) findViewById(R.id.passwordTextEdit);
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
 
-        users = database.userDao().getUserByUsername(usernameTextEdit.getText().toString());
+        users = database.userDao().getUserByEmail(emailEditText.getText().toString());
 
         if(users.size() == 1) {
 
             User user = users.get(0);
 
-            if (usernameTextEdit.getText().toString().equals("")) {
+            if (emailEditText.getText().toString().equals("")) {
 
-                CreateErrorDialog("Please enter your username.");
-            } else if (!usernameTextEdit.getText().toString().equals(user.username)) {
+                CreateErrorDialog("Please enter your email address.");
+            } else if (!emailEditText.getText().toString().equals(user.email)) {
 
-                CreateErrorDialog("The username does not match.");
-            } else if (passwordTextEdit.getText().toString().equals("")) {
+                CreateErrorDialog("The email does not match.");
+            } else if (passwordEditText.getText().toString().equals("")) {
 
                 CreateErrorDialog("Please enter your password.");
-            } else if (!passwordTextEdit.getText().toString().equals(user.password)) {
+            } else if (!passwordEditText.getText().toString().equals(user.password)) {
 
                 CreateErrorDialog("Password does not match.");
             } else {
@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else {
 
-            CreateErrorDialog("User not found. Please check your username.");
+            CreateErrorDialog("User not found. Please check your email address.");
         }
     }
 

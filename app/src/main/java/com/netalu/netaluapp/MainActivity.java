@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(users.size() == 0) {
 
-            database.userDao().addUser(new User(1,"jvisser","Jodi","Visser", "43 McNAB Lane", "Burgessville", "ON", "N0J1C0", "visser.jodi@gmail.com", "access"));
+            database.userDao().addUser(new User(1,"Jodi","Visser","Ontario", "N0J 1C0", "visser.jodi@gmail.com", "access"));
         }
 
         loginButton = (Button) findViewById(R.id.loginButton);
