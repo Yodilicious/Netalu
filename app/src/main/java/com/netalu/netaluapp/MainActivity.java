@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         if(foodGroups.size() == 0) {
             database.foodGroupDao().addFoodGroup(new FoodGroup(1, "Beef", "Cool as a beefee!"));
             database.foodGroupDao().addFoodGroup(new FoodGroup(2, "Pork", "Sexy as a Porky Piggy!"));
-            database.foodGroupDao().addFoodGroup(new FoodGroup(3, "Poultery", "Yummy as a Turkey!"));
+            database.foodGroupDao().addFoodGroup(new FoodGroup(3, "Poultry", "Yummy as a Turkey!"));
             database.foodGroupDao().addFoodGroup(new FoodGroup(4, "Venison", "Scrumptious as a Moosey!"));
         }
 

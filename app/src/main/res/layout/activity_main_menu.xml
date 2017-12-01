@@ -28,6 +28,12 @@
                 android:gravity="center|bottom"
                 android:padding="5dp">
 
+                <Button
+                    android:id="@+id/addBusiness"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Business" />
+
             </LinearLayout>
 
         </LinearLayout>

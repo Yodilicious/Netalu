@@ -1,7 +1,9 @@
 package com.netalu.netaluapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -26,17 +28,33 @@ public class MainMenuActivity extends AppCompatActivity {
     private void displayMainMenu() {
 
         linearLayout = (LinearLayout)findViewById(R.id.linearLayout2);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
         for(int i = 0; i < foodGroups.size(); i++) {
 
-            FoodGroup fg = foodGroups.get(i);
+            FoodGroup foodGroup = foodGroups.get(i);
 
             Button button = new Button(this);
-            button.setText(fg.name);
+            button.setText(foodGroup.name);
 
-            linearLayout.addView(button, lp);
+            final String foodGroupName = foodGroup.name;
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    launchShowBusinessActivity(foodGroupName);
+                }
+            });
+
+            linearLayout.addView(button, layoutParams);
         }
+    }
+
+    private void launchShowBusinessActivity(final String name) {
+
+        Intent intent = new Intent(this, MainListActivity.class);
+        intent.putExtra("FoodGroupName", name);
+        startActivity(intent);
     }
 
     @Override
