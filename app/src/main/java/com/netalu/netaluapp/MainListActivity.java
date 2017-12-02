@@ -35,6 +35,8 @@ public class MainListActivity extends ListActivity {
 
         TextView frowny = (TextView) findViewById(R.id.frownyTextView);
         TextView emptyListMessage = (TextView) findViewById(R.id.emptyListMessageTextView);
+        TextView title = (TextView) findViewById(R.id.titleTextView);
+        title.setText(foodGroupName);
 
         if(businesses.size() == 0) {
 

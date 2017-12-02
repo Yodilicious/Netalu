@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
         database = AppDatabase.getDatabase(getApplicationContext());
 
         database.businessFoodGroupDao().deleteAllBusinessFoodGroups();
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
             database.foodGroupDao().addFoodGroup(new FoodGroup(2, "Pork", "Sexy as a Porky Piggy!"));
             database.foodGroupDao().addFoodGroup(new FoodGroup(3, "Poultry", "Yummy as a Turkey!"));
             database.foodGroupDao().addFoodGroup(new FoodGroup(4, "Venison", "Scrumptious as a Moosey!"));
+            database.foodGroupDao().addFoodGroup(new FoodGroup(5, "Other", "Other Stuff!"));
         }
 
         List<Business> businesses = database.businessDao().getAllBusinesses();
@@ -121,17 +124,17 @@ public class MainActivity extends AppCompatActivity {
                     "P.O Box #33", "Otterville", "Ontario", "N4S 1T3", "544-030-7893", "www.TurkeyLurkeyFarms.com"));
             database.businessDao().addBusiness(new Business(4, "Deer Creek Farms", "Lots of Deer meat to eat!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(5, "Nature Feed Centre", "No meat here! Go fetch!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(5, "Cow Pasture Farms", "Beef For Sale!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(6, "Oxford Honey And Supplies", "Bee Beee Beeee!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(6, "Pig Farms", "Pork for Sale!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(7, "Circle G Farms Ltd", "Round and Round They Go!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(7, "Circle G Farms Ltd", "Moose Steaks for Sale!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(8, "Vanderklooster Christmas Trees", "I forgot my axe!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(8, "Vanderklooster Farms", "The Cow is Good, and so is the Pig!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(9, "Oxford Cattle Company", "Moo Over For Beef!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(9, "Oxford Venison", "Move Over For Deer!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
-            database.businessDao().addBusiness(new Business(10, "Burgessville Grain & Feed Inc", "Watch Out For Bird Poopie!", "57438 Bambi Street",
+            database.businessDao().addBusiness(new Business(10, "Burgessville Poultry Inc", "Watch Out For Bird Poopie!", "57438 Bambi Street",
                     "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "www.DeerCreekFarms.com"));
         }
 
@@ -140,19 +143,17 @@ public class MainActivity extends AppCompatActivity {
         if(bsfg.size() == 0) {
 
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(1, 1,1));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(2, 2,2));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(3, 3,3));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(3, 3,4));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(4, 4,2));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(2, 1,2));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(3, 2,3));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(4, 3,3));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(5, 4,4));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(6, 5,1));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(7, 6,2));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(8, 7,4));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(9, 8,1));
             database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(10, 8,2));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(10, 9,1));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(10, 9,4));
-            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(10, 10,4));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(11, 9,4));
+            database.businessFoodGroupDao().addBusinessFoodGroup(new BusinessFoodGroup(12, 10,3));
         }
 
         List<User> users = database.userDao().getAllUsers();
