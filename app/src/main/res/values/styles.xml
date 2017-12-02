@@ -11,7 +11,7 @@
 
     <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Colored">
         <item name="colorButtonNormal">@color/mainButtonBackgroundColor</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/mainButtonTextColor</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">

@@ -32,7 +32,8 @@
                     android:id="@+id/addBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add Business" />
+                    android:text="Add Business"
+                    android:backgroundTint="@color/specialButton" />
 
             </LinearLayout>
 
