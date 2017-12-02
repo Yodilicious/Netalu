@@ -71,6 +71,8 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
     private void launchRegisterActivity() {
 
+        boolean isValid = true;
+
         EditText firstName = (EditText) findViewById(R.id.firstNameEditText);
         EditText lastName = (EditText) findViewById(R.id.lastNameEditText);
         Spinner province = (Spinner) findViewById(R.id.provinceSpinner);
@@ -78,7 +80,47 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
         EditText email = (EditText) findViewById(R.id.emailEditText);
         EditText password = (EditText) findViewById(R.id.passwordEditText);
 
-        if(!password.getText().toString().equals("")) {
+        if(firstName.getText().toString().equals("")) {
+
+            Toast.makeText(getApplicationContext(), "First Name cannot be empty.", Toast.LENGTH_LONG).show();
+            firstName.setError("First Name cannot be empty.");
+
+            isValid = false;
+        }
+
+        if(lastName.getText().toString().equals("")) {
+
+            Toast.makeText(getApplicationContext(), "Last Name cannot be empty.", Toast.LENGTH_LONG).show();
+            lastName.setError("Last Name cannot be empty.");
+
+            isValid = false;
+        }
+
+        if(postalCode.getText().toString().equals("")) {
+
+            Toast.makeText(getApplicationContext(), "Postal Code cannot be empty.", Toast.LENGTH_LONG).show();
+            postalCode.setError("Postal Code cannot be empty.");
+
+            isValid = false;
+        }
+
+        if(email.getText().toString().equals("")) {
+
+            Toast.makeText(getApplicationContext(), "Email cannot be empty.", Toast.LENGTH_LONG).show();
+            email.setError("Email cannot be empty.");
+
+            isValid = false;
+        }
+
+        if(password.getText().toString().equals("")) {
+
+            Toast.makeText(getApplicationContext(), "Password cannot be empty", Toast.LENGTH_LONG).show();
+            password.setError("Password cannot be empty");
+
+            isValid = false;
+        }
+
+        if(isValid) {
 
             users  = database.userDao().getUserByEmail(email.getText().toString());
 
@@ -93,16 +135,12 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
 
                 database.userDao().addUser(new User(0, firstNameStr, lastNameStr, provinceStr, postalCodeStr, emailStr, passwordStr));
 
-                Intent intent = new Intent(this, MainMenuActivity.class);
+                Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             } else {
-                CreateErrorDialog("This email already exists.");
+
+                Toast.makeText(getApplicationContext(), "This email already exists.", Toast.LENGTH_LONG).show();
             }
-
-        } else {
-
-            Toast.makeText(getApplicationContext(), "Password does not Match", Toast.LENGTH_LONG).show();
-            password.setError("Password cannot be empty");
         }
     }
 
@@ -124,18 +162,5 @@ public class RegistrationActivity extends AppCompatActivity implements AdapterVi
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    private void CreateErrorDialog(String text) {
-        AlertDialog ad = new AlertDialog.Builder(this).create();
-        ad.setCancelable(false); // This blocks the 'BACK' button
-        ad.setMessage(text);
-        ad.setButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        ad.show();
     }
 }

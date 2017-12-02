@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.netalu.netaluapp.database.AppDatabase;
 import com.netalu.netaluapp.database.User;
@@ -85,16 +86,16 @@ public class LoginActivity extends AppCompatActivity {
 
             if (email.equals("")) {
 
-                CreateErrorDialog("Please enter your email address.");
+                Toast.makeText(getApplicationContext(), "Please enter your email address.", Toast.LENGTH_LONG).show();
             } else if (!email.equals(user.email)) {
 
-                CreateErrorDialog("The email does not match.");
+                Toast.makeText(getApplicationContext(), "The email does not match.", Toast.LENGTH_LONG).show();
             } else if (password.equals("")) {
 
-                CreateErrorDialog("Please enter your password.");
+                Toast.makeText(getApplicationContext(), "Please enter your password.", Toast.LENGTH_LONG).show();
             } else if (!password.equals(user.password)) {
 
-                CreateErrorDialog("Password does not match.");
+                Toast.makeText(getApplicationContext(), "Password does not match.", Toast.LENGTH_LONG).show();
             } else {
 
                 if(rememberCredentials.isChecked()) {
@@ -120,21 +121,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else {
 
-            CreateErrorDialog("User not found. Please check your email address.");
+            Toast.makeText(getApplicationContext(), "User not found. Please check your email address.", Toast.LENGTH_LONG).show();
         }
-    }
-
-    private void CreateErrorDialog(String text) {
-        AlertDialog ad = new AlertDialog.Builder(this).create();
-        ad.setCancelable(false); // This blocks the 'BACK' button
-        ad.setMessage(text);
-        ad.setButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        ad.show();
     }
 
     private void launchMainActivity() {
