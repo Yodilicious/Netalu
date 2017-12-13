@@ -16,6 +16,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private AppDatabase database;
     private List<FoodGroup> foodGroups;
+    private Button button;
 
     LinearLayout linearLayout;
 
@@ -62,10 +63,23 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+
         database = AppDatabase.getDatabase(getApplicationContext());
 
         foodGroups = database.foodGroupDao().getAllFoodGroups();
 
         displayMainMenu();
+
+        button = (Button) findViewById(R.id.addNewBusiness);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addNewBusiness();
+            }
+        });
+    }
+    public void addNewBusiness(){
+        Intent intent = new Intent(this, AddNewBusinessActivity.class);
+        startActivity(intent);
     }
 }

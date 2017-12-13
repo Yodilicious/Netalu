@@ -29,7 +29,7 @@
                 android:padding="5dp">
 
                 <Button
-                    android:id="@+id/addBusiness"
+                    android:id="@+id/addNewBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Add Business"
