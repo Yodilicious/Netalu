@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         } else {
 
-            Toast.makeText(getApplicationContext(), "User not found. Please check your email address.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "User is not found. Please check your email address.", Toast.LENGTH_LONG).show();
         }
     }
 
