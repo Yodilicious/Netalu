@@ -38,14 +38,13 @@
                         android:text="Business Name"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/businessNameEditText"
+                    <TextView
+                        android:id="@+id/businessNameDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName|textCapWords"
-                        android:text="" />
+                        android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -60,66 +59,16 @@
                         android:layout_width="match_parent"
                         android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:text="Details"
+                        android:text="Description"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/descriptionEditText"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
                     <TextView
-                        android:id="@+id/businessAddress1TextView"
+                        android:id="@+id/descriptionDetailTextView"
                         android:layout_width="match_parent"
                         android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:text="Address 1"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/businessAddress1EditText"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName|textCapWords"
-                        android:text="" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <TextView
-                        android:id="@+id/businessAddress2TextView"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.65"
-                        android:layout_height="wrap_content"
-                        android:text="Address 2"
-                        android:textSize="@dimen/text_form_label" />
-
-                    <EditText
-                        android:id="@+id/businessAddress2EditText"
-                        android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName|textCapWords"
-                        android:text="" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -137,13 +86,61 @@
                         android:text="City"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/cityEditText"
+                    <TextView
+                        android:id="@+id/cityDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPersonName|textCapWords" />
+                        android:textSize="@dimen/text_form_label" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/businessAddress1TextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:text="Address 1"
+                        android:textSize="@dimen/text_form_label" />
+
+                    <TextView
+                        android:id="@+id/businessAddress1DetailTextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_form_label" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/businessAddress2TextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:text="Address 2"
+                        android:textSize="@dimen/text_form_label" />
+
+                    <TextView
+                        android:id="@+id/businessAddress2DetailTextView"
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.65"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -156,17 +153,18 @@
                     <TextView
                         android:id="@+id/provinceTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.65"
+                        android:layout_weight="0.5"
                         android:layout_height="wrap_content"
                         android:text="Province"
                         android:textSize="@dimen/text_form_label" />
 
-                    <Spinner
-                        android:id="@+id/provinceSpinner"
+                    <TextView
+                        android:id="@+id/provinceDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
-                        android:layout_height="match_parent"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"
                         android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -184,13 +182,13 @@
                         android:text="Postal Code"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/postalCodeEditText"
+                    <TextView
+                        android:id="@+id/postalCodeDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textPostalAddress" />
+                        android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -208,13 +206,13 @@
                         android:text="Phone Number"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/phoneEditText"
+                    <TextView
+                        android:id="@+id/phoneDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="phone" />
+                        android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -232,13 +230,13 @@
                         android:text="Email"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/emailEditText"
+                    <TextView
+                        android:id="@+id/emailDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text" />
+                        android:textSize="@dimen/text_form_label" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -256,28 +254,13 @@
                         android:text="Website"
                         android:textSize="@dimen/text_form_label" />
 
-                    <EditText
-                        android:id="@+id/websiteEditText"
+                    <TextView
+                        android:id="@+id/websiteDetailTextView"
                         android:layout_width="match_parent"
-                        android:layout_weight="0.35"
+                        android:layout_weight="0.65"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="text" />
-                </LinearLayout>
+                        android:textSize="@dimen/text_form_label" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal"
-                    android:padding="5dp">
-
-                    <Button
-                        android:id="@+id/addNewBusiness"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.5"
-                        android:text="Add New Business" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -287,3 +270,4 @@
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
+

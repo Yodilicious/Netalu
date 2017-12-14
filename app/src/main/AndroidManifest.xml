@@ -94,7 +94,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainListActivity" />
-        <activity android:name=".AddNewBusinessActivity"></activity>
+        <activity android:name=".AddNewBusinessActivity" />
+        <activity android:name=".BusinessDetailsActivity"></activity>
     </application>
 
 </manifest>
