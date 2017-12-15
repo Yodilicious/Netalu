@@ -33,7 +33,6 @@
                 android:gravity="bottom"
                 android:layout_alignParentTop="true"
                 android:padding="15dp">
-
             </LinearLayout>
 
             <LinearLayout
@@ -65,6 +64,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.5"
                         android:text="Register" />
+
 
                 </LinearLayout>
 
