@@ -21,9 +21,11 @@ public class Business {
     public String phone_number;
     public String email;
     public String website;
+    public String longitude;
+    public String latitude;
 
     public Business(int id, String name, String description, String address1, String address2,
-                String city, String province, String postal_code, String phone_number, String email, String website) {
+                String city, String province, String postal_code, String phone_number, String email, String website, String longitude, String latitude) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -35,5 +37,7 @@ public class Business {
         this.phone_number = phone_number;
         this.email = email;
         this.website = website;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 }

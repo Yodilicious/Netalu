@@ -117,25 +117,25 @@ public class MainActivity extends AppCompatActivity {
 
         if(businesses.size() == 0) {
             database.businessDao().addBusiness(new Business(1, "Old MacDonald's Farm", "We sell lots of Beef and Pork products", "34993 Church Road",
-                    "P.O Box #12", "Norwich", "Ontario", "N0J 1P0", "345-333-2345", "OldMacDonald'sFarm@gmail.com","www.OldMacDonald'sFarm.com"));
+                    "P.O Box #12", "Norwich", "Ontario", "N0J 1P0", "345-333-2345", "OldMacDonald'sFarm@gmail.com","www.OldMacDonald'sFarm.com","-80.404782","43.389864"));
             database.businessDao().addBusiness(new Business(2, "Mother Goose Farms", "We sell lots of Poultry products. Come visit us!", "34678 Downey Street",
-                    "P.O Box #114", "Burgessville", "Ontario", "N0J 1C0", "519-393-7777","MotherGooseFarms@gmail.com", "www.MotherGooseFarms.com"));
+                    "P.O Box #114", "Burgessville", "Ontario", "N0J 1C0", "519-393-7777","MotherGooseFarms@gmail.com", "www.MotherGooseFarms.com","-80.648995","43.025412"));
             database.businessDao().addBusiness(new Business(3, "Turkey Lurkey Farms", "Juicy and plump turkey for sale!", "67895 Feather Road",
-                    "P.O Box #33", "Otterville", "Ontario", "N4S 1T3", "544-030-7893", "TurkeyLurkey@gmail.com","www.TurkeyLurkeyFarms.com"));
+                    "P.O Box #33", "Otterville", "Ontario", "N4S 1T3", "544-030-7893", "TurkeyLurkey@gmail.com","www.TurkeyLurkeyFarms.com","-80.069009","43.280123"));
             database.businessDao().addBusiness(new Business(4, "Deer Creek Farms", "Lots of Deer meat to eat!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com","-80.226945", "43.524203"));
             database.businessDao().addBusiness(new Business(5, "Cow Pasture Farms", "Beef For Sale!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com","-81.491296", "43.040412"));
             database.businessDao().addBusiness(new Business(6, "Pig Farms", "Pork for Sale!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com","-79.709254", "43.871926 "));
             database.businessDao().addBusiness(new Business(7, "Circle G Farms Ltd", "Moose Steaks for Sale!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432","DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432","DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"," -79.774904", "44.507523"));
             database.businessDao().addBusiness(new Business(8, "Vanderklooster Farms", "The Cow is Good, and so is the Pig!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com","-80.48158", "42.882318"));
             database.businessDao().addBusiness(new Business(9, "Oxford Venison", "Move Over For Deer!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432", "DeerCreekFarms@gmail.com","www.DeerCreekFarms.com","-80.08043509999999", "43.5754125"));
             database.businessDao().addBusiness(new Business(10, "Burgessville Poultry Inc", "Watch Out For Bird Poopie!", "57438 Bambi Street",
-                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432","DeerCreekFarms@gmail.com" ,"www.DeerCreekFarms.com"));
+                    "P.O Box #344", "Norwich", "Ontario", "N0J 1P0", "432-333-5432","DeerCreekFarms@gmail.com" ,"www.DeerCreekFarms.com","-82.5927934","42.1549153" ));
         }
 
         List<BusinessFoodGroup> bsfg = database.businessFoodGroupDao().getAllBusinessFoodGroups();

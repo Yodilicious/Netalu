@@ -22,7 +22,7 @@ import com.netalu.netaluapp.dao.UserDao;
         ScheduleHour.class,
         User.class,
         BusinessFoodGroup.class
-    }, version = 18, exportSchema = false)
+    }, version = 19, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
