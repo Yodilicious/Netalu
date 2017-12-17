@@ -3,10 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Netalu.iml" filepath="$PROJECT_DIR$/Netalu.iml" />
-      <module fileurl="file://C:\Projects\Netalu\Netalu.iml" filepath="C:\Projects\Netalu\Netalu.iml" />
       <module fileurl="file://C:\Projects\Netalu\NetaluApp.iml" filepath="C:\Projects\Netalu\NetaluApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Projects\Netalu\app\app.iml" filepath="C:\Projects\Netalu\app\app.iml" />
     </modules>
   </component>
 </project>

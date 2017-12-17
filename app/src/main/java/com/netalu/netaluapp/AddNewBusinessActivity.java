@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
@@ -145,14 +146,6 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if (businessAddress2.getText().toString().equals("")) {
-
-            Toast.makeText(getApplicationContext(), "Business Address cannot be empty.", Toast.LENGTH_LONG).show();
-            description.setError("Business Address cannot be empty.");
-
-            isValid = false;
-        }
-
         if (postalCode.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Postal Code cannot be empty.", Toast.LENGTH_LONG).show();
@@ -201,7 +194,8 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
                 // for ActivityCompat#requestPermissions for more details.
                 return;
             }
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if(users.size() == 0) {
 
