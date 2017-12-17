@@ -36,6 +36,8 @@ public class BusinessDetailsActivity extends AppCompatActivity {
         TextView phoneDetail = (TextView) findViewById(R.id.phoneDetailTextView);
         TextView emailDetail = (TextView) findViewById(R.id.emailDetailTextView);
         TextView websiteDetail = (TextView) findViewById(R.id.websiteDetailTextView);
+        TextView longitudeDetial = (TextView) findViewById(R.id.longitudeDetailTextView);
+        TextView latitudeDetail = (TextView) findViewById(R.id.latitudeDetailTextView);
 
         businessNameDetail.setText(business.name);
         cityDetail.setText(business.city);
@@ -46,8 +48,7 @@ public class BusinessDetailsActivity extends AppCompatActivity {
         phoneDetail.setText(business.phone_number);
         emailDetail.setText(business.email);
         websiteDetail.setText(business.website);
-
-
-
+        longitudeDetial.setText(business.longitude);
+        latitudeDetail.setText(business.latitude);
     }
 }

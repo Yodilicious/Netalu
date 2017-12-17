@@ -1,8 +1,14 @@
 package com.netalu.netaluapp;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +35,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
     private ImageView imageView;
     private static final int CAMERA_REQUEST = 1888;
 
-    private static final String[]paths =
+    private static final String[] paths =
             {
                     "Alberta",
                     "British Columbia",
@@ -55,15 +61,15 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
 
         addBusinessButton = (Button) findViewById(R.id.addNewBusiness);
 
-        spinner = (Spinner)findViewById(R.id.provinceSpinner);
+        spinner = (Spinner) findViewById(R.id.provinceSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewBusinessActivity.this,
-                android.R.layout.simple_spinner_item,paths);
+                android.R.layout.simple_spinner_item, paths);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        int selectSpinnerPosition= adapter.getPosition("Ontario");
+        int selectSpinnerPosition = adapter.getPosition("Ontario");
         spinner.setSelection(selectSpinnerPosition);
 
         addBusinessButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +79,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             }
         });
 
-        imageView = (ImageView)this.findViewById(R.id.cameraImageView);
+        imageView = (ImageView) this.findViewById(R.id.cameraImageView);
         Button photoButton = (Button) this.findViewById(R.id.photoButton);
         photoButton.setOnClickListener(new View.OnClickListener() {
 
@@ -107,7 +113,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
         EditText email = (EditText) findViewById(R.id.emailEditText);
         EditText website = (EditText) findViewById(R.id.websiteEditText);
 
-        if(businessName.getText().toString().equals("")) {
+        if (businessName.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Business Name cannot be empty.", Toast.LENGTH_LONG).show();
             businessName.setError("Business Name cannot be empty.");
@@ -115,7 +121,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(description.getText().toString().equals("")) {
+        if (description.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Description cannot be empty.", Toast.LENGTH_LONG).show();
             description.setError("Description cannot be empty.");
@@ -123,7 +129,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(city.getText().toString().equals("")) {
+        if (city.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "City cannot be empty.", Toast.LENGTH_LONG).show();
             description.setError("City cannot be empty.");
@@ -131,7 +137,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(businessAddress1.getText().toString().equals("")) {
+        if (businessAddress1.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Business Address cannot be empty.", Toast.LENGTH_LONG).show();
             description.setError("Business Address cannot be empty.");
@@ -139,7 +145,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(businessAddress2.getText().toString().equals("")) {
+        if (businessAddress2.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Business Address cannot be empty.", Toast.LENGTH_LONG).show();
             description.setError("Business Address cannot be empty.");
@@ -147,7 +153,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(postalCode.getText().toString().equals("")) {
+        if (postalCode.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Postal Code cannot be empty.", Toast.LENGTH_LONG).show();
             postalCode.setError("Postal Code cannot be empty.");
@@ -155,7 +161,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(phone.getText().toString().equals("")) {
+        if (phone.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Phone cannot be empty.", Toast.LENGTH_LONG).show();
             phone.setError("Phone cannot be empty.");
@@ -163,7 +169,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(email.getText().toString().equals("")) {
+        if (email.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Email cannot be empty.", Toast.LENGTH_LONG).show();
             phone.setError("Email cannot be empty.");
@@ -171,7 +177,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(website.getText().toString().equals("")) {
+        if (website.getText().toString().equals("")) {
 
             Toast.makeText(getApplicationContext(), "Website cannot be empty.", Toast.LENGTH_LONG).show();
             phone.setError("Website cannot be empty.");
@@ -179,9 +185,23 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             isValid = false;
         }
 
-        if(isValid) {
+        if (isValid) {
 
-            users  = database.userDao().getUserByEmail(email.getText().toString());
+            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            users = database.userDao().getUserByEmail(email.getText().toString());
+            LocationListener locationListener = new NetaluLocationListener();
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 10, locationListener);
 
             if(users.size() == 0) {
 
@@ -197,7 +217,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
                 String websiteStr = website.getText().toString();
 
                 Business business = new Business(0, businessNameStr, descriptionStr, cityStr,
-                        businessAddress1Str, businessAddress2Str, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr);
+                        businessAddress1Str, businessAddress2Str, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr, ((NetaluLocationListener)locationListener).getLongitude(), ((NetaluLocationListener)locationListener).getLatitude());
 
                 database.businessDao().addBusiness(business);
                 int id = database.businessDao().getLastBusinessId();
