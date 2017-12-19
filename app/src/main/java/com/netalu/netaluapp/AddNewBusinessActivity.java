@@ -9,9 +9,11 @@ import android.graphics.Bitmap;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,11 +23,18 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.netalu.netaluapp.database.AppDatabase;
 import com.netalu.netaluapp.database.Business;
 import com.netalu.netaluapp.database.User;
 
 import java.util.List;
+
+import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
 
 public class AddNewBusinessActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -35,6 +44,10 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
     private Spinner spinner;
     private ImageView imageView;
     private static final int CAMERA_REQUEST = 1888;
+    private LocationCallback mLocationCallback;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private String longitude;
+    private String latitude;
 
     private static final String[] paths =
             {
@@ -90,6 +103,53 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
                 startActivityForResult(cameraIntent, CAMERA_REQUEST);
             }
         });
+
+        getLastLocation();
+    }
+
+    public void onLocationChanged(Location location) {
+        // New location has now been determined
+        longitude = Double.toString(location.getLongitude());
+        latitude = Double.toString(location.getLatitude());
+        //String msg = "Updated Location: " +
+        //        Double.toString(location.getLatitude()) + "," +
+        //        Double.toString(location.getLongitude());
+        //Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+        // You can now create a LatLng Object for use with maps
+        //LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+    }
+
+    public void getLastLocation() {
+        // Get last known recent location using new Google Play Services SDK (v11+)
+        FusedLocationProviderClient locationClient = getFusedLocationProviderClient(this);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locationClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // GPS location can be null if GPS is switched off
+                        if (location != null) {
+                            onLocationChanged(location);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("MapDemoActivity", "Error trying to get last GPS location");
+                        e.printStackTrace();
+                    }
+                });
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -180,22 +240,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
 
         if (isValid) {
 
-            LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             users = database.userDao().getUserByEmail(email.getText().toString());
-            LocationListener locationListener = new NetaluLocationListener();
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-            Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
             if(users.size() == 0) {
 
@@ -211,7 +256,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
                 String websiteStr = website.getText().toString();
 
                 Business business = new Business(0, businessNameStr, descriptionStr, cityStr,
-                        businessAddress1Str, businessAddress2Str, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr, ((NetaluLocationListener)locationListener).getLongitude(), ((NetaluLocationListener)locationListener).getLatitude());
+                        businessAddress1Str, businessAddress2Str, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr, longitude, latitude);
 
                 database.businessDao().addBusiness(business);
                 int id = database.businessDao().getLastBusinessId();
