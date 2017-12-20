@@ -49,6 +49,7 @@
                         android:id="@+id/photoButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:text="Take a Photo"
                         android:layout_weight="1" />
 
                 </LinearLayout>

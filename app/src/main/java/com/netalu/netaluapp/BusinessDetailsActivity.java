@@ -28,27 +28,29 @@ public class BusinessDetailsActivity extends AppCompatActivity {
 
 
         TextView businessNameDetail = (TextView) findViewById(R.id.businessNameDetailTextView);
-        TextView cityDetail = (TextView) findViewById(R.id.cityDetailTextView);
+        TextView descriptionDetail = (TextView) findViewById(R.id.descriptionDetailTextView);
         TextView businessAddress1Detail = (TextView) findViewById(R.id.businessAddress1DetailTextView);
         TextView businessAddress2Detail = (TextView) findViewById(R.id.businessAddress2DetailTextView);
+        TextView cityDetail = (TextView) findViewById(R.id.cityDetailTextView);
         TextView provinceDetail = (TextView) findViewById(R.id.provinceDetailTextView);
         TextView postalCodeDetail = (TextView) findViewById(R.id.postalCodeDetailTextView);
         TextView phoneDetail = (TextView) findViewById(R.id.phoneDetailTextView);
         TextView emailDetail = (TextView) findViewById(R.id.emailDetailTextView);
         TextView websiteDetail = (TextView) findViewById(R.id.websiteDetailTextView);
-        TextView longitudeDetial = (TextView) findViewById(R.id.longitudeDetailTextView);
+        TextView longitudeDetail = (TextView) findViewById(R.id.longitudeDetailTextView);
         TextView latitudeDetail = (TextView) findViewById(R.id.latitudeDetailTextView);
 
         businessNameDetail.setText(business.name);
-        cityDetail.setText(business.city);
+        descriptionDetail.setText(business.description);
         businessAddress1Detail.setText(business.address1);
         businessAddress2Detail.setText(business.address2);
+        cityDetail.setText(business.city);
         provinceDetail.setText(business.province);
         postalCodeDetail.setText(business.postal_code);
         phoneDetail.setText(business.phone_number);
         emailDetail.setText(business.email);
         websiteDetail.setText(business.website);
-        longitudeDetial.setText(business.longitude);
+        longitudeDetail.setText(business.longitude);
         latitudeDetail.setText(business.latitude);
     }
 }
