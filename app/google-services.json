@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "460126326817",
+    "firebase_url": "https://netalu-3f8a0.firebaseio.com",
+    "project_id": "netalu-3f8a0",
+    "storage_bucket": "netalu-3f8a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460126326817:android:00833a1d38ed1b31",
+        "android_client_info": {
+          "package_name": "com.netalu.netaluapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460126326817-076hg707osf82ml7spnnd16ae9a8sav0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQvK64DZOBknfH0Xrjfyr0lVC3ZTGGlcI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
