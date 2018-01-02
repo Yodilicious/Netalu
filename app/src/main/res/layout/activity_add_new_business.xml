@@ -42,7 +42,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="bottom"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="5dp">
 
                     <Button
@@ -50,6 +50,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="Take a Photo"
+                        android:layout_weight="1" />
+
+                    <Button
+                        android:id="@+id/downloadImageButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Download Image"
                         android:layout_weight="1" />
 
                 </LinearLayout>

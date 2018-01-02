@@ -41,6 +41,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
     private AppDatabase database;
     private List<User> users;
     private Button addBusinessButton;
+    private Button downloadImageButton;
     private Spinner spinner;
     private ImageView imageView;
     private static final int CAMERA_REQUEST = 1888;
@@ -74,6 +75,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
         database = AppDatabase.getDatabase(getApplicationContext());
 
         addBusinessButton = (Button) findViewById(R.id.addNewBusiness);
+        downloadImageButton = (Button) findViewById(R.id.downloadImageButton);
 
         spinner = (Spinner) findViewById(R.id.provinceSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewBusinessActivity.this,
@@ -90,6 +92,13 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             @Override
             public void onClick(View view) {
                 launchBusinessDetailsActivity();
+            }
+        });
+
+        downloadImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchFileDownloaderActivity();
             }
         });
 
@@ -157,6 +166,12 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
             Bitmap photo = (Bitmap) data.getExtras().get("data");
             imageView.setImageBitmap(photo);
         }
+    }
+
+    private void launchFileDownloaderActivity() {
+
+        Intent intent = new Intent(this, FileDownloaderActivity.class);
+        startActivity(intent);
     }
 
     private void launchBusinessDetailsActivity() {
