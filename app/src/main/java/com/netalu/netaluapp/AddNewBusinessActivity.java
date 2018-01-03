@@ -30,8 +30,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.netalu.netaluapp.database.AppDatabase;
 import com.netalu.netaluapp.database.Business;
+import com.netalu.netaluapp.database.FoodGroup;
 import com.netalu.netaluapp.database.User;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -42,7 +45,10 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
     private List<User> users;
     private Button addBusinessButton;
     private Button downloadImageButton;
+    private Button selectCategoryButton;
     private Spinner spinner;
+    private Spinner categorySpinner;
+    private List<String> listValues;
     private ImageView imageView;
     private static final int CAMERA_REQUEST = 1888;
     private LocationCallback mLocationCallback;
@@ -76,6 +82,25 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
 
         addBusinessButton = (Button) findViewById(R.id.addNewBusiness);
         downloadImageButton = (Button) findViewById(R.id.downloadImageButton);
+
+        categorySpinner = (Spinner) findViewById(R.id.categorySpinner);
+
+        List<FoodGroup> foodGroups = database.foodGroupDao().getAllFoodGroups();
+
+        listValues = new ArrayList<String>();
+
+        for(Iterator<FoodGroup> i = foodGroups.iterator(); i.hasNext();) {
+
+            FoodGroup foodGroup = i.next();
+
+            listValues.add(foodGroup.name);
+        }
+
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<String>(AddNewBusinessActivity.this, android.R.layout.simple_spinner_item, listValues);
+
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(categoryAdapter);
+        categorySpinner.setOnItemSelectedListener(this);
 
         spinner = (Spinner) findViewById(R.id.provinceSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddNewBusinessActivity.this,
@@ -180,6 +205,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
 
         EditText businessName = (EditText) findViewById(R.id.businessNameEditText);
         EditText description = (EditText) findViewById(R.id.descriptionEditText);
+        Spinner category = (Spinner) findViewById(R.id.categorySpinner);
         EditText city = (EditText) findViewById(R.id.cityEditText);
         EditText businessAddress1 = (EditText) findViewById(R.id.businessAddress1EditText);
         EditText businessAddress2 = (EditText) findViewById(R.id.businessAddress2EditText);
@@ -261,6 +287,7 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
 
                 String businessNameStr = businessName.getText().toString();
                 String descriptionStr = description.getText().toString();
+                String categoryStr = category.getSelectedItem().toString();
                 String cityStr = city.getText().toString();
                 String businessAddress1Str = businessAddress1.getText().toString();
                 String businessAddress2Str = businessAddress2.getText().toString();
@@ -270,8 +297,10 @@ public class AddNewBusinessActivity extends AppCompatActivity implements Adapter
                 String emailStr = email.getText().toString();
                 String websiteStr = website.getText().toString();
 
-                Business business = new Business(0, businessNameStr, descriptionStr, cityStr,
-                        businessAddress1Str, businessAddress2Str, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr, longitude, latitude);
+                List<FoodGroup> foodGroup = database.foodGroupDao().getFoodGroupByName(categoryStr);
+
+                Business business = new Business(0, foodGroup.get(0).id, businessNameStr, descriptionStr, businessAddress1Str,
+                        businessAddress2Str, cityStr, provinceStr, postalCodeStr, phoneStr, emailStr, websiteStr, longitude, latitude);
 
                 database.businessDao().addBusiness(business);
                 int id = database.businessDao().getLastBusinessId();

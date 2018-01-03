@@ -114,7 +114,8 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".FileDownloaderActivity"></activity>
+        <activity android:name=".FileDownloaderActivity" />
+        <activity android:name=".CategorySelectActivity"></activity>
     </application>
 
 </manifest>

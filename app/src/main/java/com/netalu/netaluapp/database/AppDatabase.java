@@ -6,7 +6,6 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.netalu.netaluapp.dao.BusinessDao;
-import com.netalu.netaluapp.dao.BusinessFoodGroupDao;
 import com.netalu.netaluapp.dao.FoodGroupDao;
 import com.netalu.netaluapp.dao.ReviewDao;
 import com.netalu.netaluapp.dao.ScheduleDao;
@@ -20,9 +19,8 @@ import com.netalu.netaluapp.dao.UserDao;
         Review.class,
         Schedule.class,
         ScheduleHour.class,
-        User.class,
-        BusinessFoodGroup.class
-    }, version = 19, exportSchema = false)
+        User.class
+    }, version = 21, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;
@@ -33,7 +31,6 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ScheduleDao scheduleDao();
     public abstract ScheduleHourDao scheduleHourDao();
     public abstract UserDao userDao();
-    public abstract BusinessFoodGroupDao businessFoodGroupDao();
 
     public static AppDatabase getDatabase(Context context) {
 

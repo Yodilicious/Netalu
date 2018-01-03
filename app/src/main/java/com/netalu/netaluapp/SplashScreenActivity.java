@@ -3,14 +3,6 @@ package com.netalu.netaluapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
-
-import com.netalu.netaluapp.database.AppDatabase;
-import com.netalu.netaluapp.database.Business;
-import com.netalu.netaluapp.database.BusinessFoodGroup;
-import com.netalu.netaluapp.database.FoodGroup;
-
-import java.util.List;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

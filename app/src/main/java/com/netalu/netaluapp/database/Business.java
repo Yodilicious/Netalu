@@ -11,6 +11,7 @@ public class Business {
 
     @PrimaryKey(autoGenerate = true)
     public final int id;
+    public int food_group_id;
     public String name;
     public String description;
     public String address1;
@@ -24,9 +25,10 @@ public class Business {
     public String longitude;
     public String latitude;
 
-    public Business(int id, String name, String description, String address1, String address2,
+    public Business(int id, int food_group_id, String name, String description, String address1, String address2,
                 String city, String province, String postal_code, String phone_number, String email, String website, String longitude, String latitude) {
         this.id = id;
+        this.food_group_id = food_group_id;
         this.name = name;
         this.description = description;
         this.address1 = address1;

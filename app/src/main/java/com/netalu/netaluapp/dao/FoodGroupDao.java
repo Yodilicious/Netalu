@@ -22,6 +22,9 @@ public interface FoodGroupDao {
     @Query("SELECT * FROM food_group WHERE id = :food_group_id")
     public List<FoodGroup> getFoodGroup(int food_group_id);
 
+    @Query("SELECT * FROM food_group WHERE name = :name")
+    public List<FoodGroup> getFoodGroupByName(String name);
+
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateFoodGroup(FoodGroup foodGroup);
 
