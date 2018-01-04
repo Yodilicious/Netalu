@@ -3,5 +3,9 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
-    <dimen name="text_form_label">20dp</dimen>
+    <dimen name="text_form_label">18dp</dimen>
+    <dimen name="text_form_title_label">14dp</dimen>
+    <dimen name="margin_title">3dp</dimen>
+    <dimen name="margin_icon">19dp</dimen>
+
 </resources>

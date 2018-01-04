@@ -99,9 +99,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainListActivity" />
-        <activity android:name=".AddNewBusinessActivity" />
-        <activity android:name=".BusinessDetailsActivity" />
+        <activity android:name=".MainListActivity"
+            android:label="Main Menu"
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".AddNewBusinessActivity"
+            android:label="Add New Business"
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".BusinessDetailsActivity"
+            android:label="Business Details"
+            android:parentActivityName=".MainMenuActivity"
+            android:theme="@style/AppTheme" />
 
         <service android:name=".services.NetaluFirebaseMessagingService">
             <intent-filter>

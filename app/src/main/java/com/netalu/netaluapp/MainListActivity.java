@@ -1,10 +1,12 @@
 package com.netalu.netaluapp;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.netalu.netaluapp.database.AppDatabase;
@@ -60,5 +62,16 @@ public class MainListActivity extends ListActivity {
         CustomListAdapter myAdapter = new CustomListAdapter(this, businesses.toArray(new Business[0]));
 
         setListAdapter(myAdapter);
+    }
+
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+
+        Business business = (Business) l.getAdapter().getItem((int)id);
+
+        Intent intent = new Intent(this, BusinessDetailsActivity.class);
+        intent.putExtra("BusinessId", business.id);
+        startActivity(intent);
+
     }
 }
