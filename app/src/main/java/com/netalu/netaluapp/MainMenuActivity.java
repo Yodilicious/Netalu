@@ -63,12 +63,19 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-
         database = AppDatabase.getDatabase(getApplicationContext());
 
         foodGroups = database.foodGroupDao().getAllFoodGroups();
 
         displayMainMenu();
+
+        Button contactButton = (Button) findViewById(R.id.contactsButton);
+        contactButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openContactsActivity();
+            }
+        });
 
         button = (Button) findViewById(R.id.addNewBusiness);
         button.setOnClickListener(new View.OnClickListener() {
@@ -78,8 +85,14 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
     }
+
     public void addNewBusiness(){
         Intent intent = new Intent(this, AddNewBusinessActivity.class);
+        startActivity(intent);
+    }
+
+    public void openContactsActivity(){
+        Intent intent = new Intent(this, ContactsActivity.class);
         startActivity(intent);
     }
 }
